@@ -1,0 +1,214 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+
+  --border: #e2e8f0;
+  --border-strong: #cbd5e1;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+
+  --primary: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-foreground: #ffffff;
+  --primary-soft: #eef2ff;
+
+  --accent: #7c3aed;
+
+  --success: #16a34a;
+  --success-soft: #f0fdf4;
+  --warning: #d97706;
+  --warning-soft: #fffbeb;
+  --danger: #dc2626;
+  --danger-soft: #fef2f2;
+  --info: #0284c7;
+  --info-soft: #f0f9ff;
+
+  --ring: #4f46e5;
+
+  --shadow-color: 222deg 39% 11%;
+}
+
+.dark {
+  --background: #05070f;
+  --foreground: #f1f5f9;
+
+  --card: #0f1420;
+  --card-foreground: #f1f5f9;
+
+  --border: #1e2536;
+  --border-strong: #2a3247;
+
+  --muted: #131826;
+  --muted-foreground: #8b93a7;
+
+  --primary: #6366f1;
+  --primary-hover: #7c7ff5;
+  --primary-foreground: #ffffff;
+  --primary-soft: #171b2e;
+
+  --accent: #a78bfa;
+
+  --success: #4ade80;
+  --success-soft: #0f2318;
+  --warning: #fbbf24;
+  --warning-soft: #2a1f0a;
+  --danger: #f87171;
+  --danger-soft: #2a1414;
+  --info: #38bdf8;
+  --info-soft: #0c2233;
+
+  --ring: #6366f1;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+
+  --color-accent: var(--accent);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  --animate-fade-in: fade-in 0.4s ease-out;
+  --animate-slide-up: slide-up 0.35s ease-out;
+  --animate-slide-down: slide-down 0.35s ease-out;
+  --animate-scale-in: scale-in 0.2s ease-out;
+  --animate-shimmer: shimmer 1.6s ease-in-out infinite;
+  --animate-top-progress: top-progress 1.1s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  /* Used by top-right toasts — drops down into place from above,
+     matching the anchor point, instead of rising from below. */
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  /* A soft highlight sweeping across a skeleton block — the "premium
+     dashboard" loading look (Linear/Vercel/GitHub-style), replacing a
+     flat pulsing block with something that reads as "actively loading"
+     rather than just "greyed out". */
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  /* Indeterminate top-of-page loading bar (the same idea as YouTube's
+     or GitHub's nav-top progress bar) — used when data already on
+     screen is being quietly refreshed in the background, so it never
+     needs to compete for space or attention like a banner would. */
+  @keyframes top-progress {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(400%);
+    }
+  }
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+::selection {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Thin, unobtrusive scrollbar for a more premium feel */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--muted-foreground);
+}

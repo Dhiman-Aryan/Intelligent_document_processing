@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Personal editor / assistant settings — not shared project config
+.vscode/
+.claude/
+
+# Personal presentation file — not project source
+Document_Intelligence_Platform.pptx
+
+# backend/ and frontend/ each have their own .gitignore covering
+# venv/, node_modules/, .env, __pycache__/, .next/, etc.
